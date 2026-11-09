@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ИСКРА — короткие игры на внимание</title>
+    <style>
+      :root {
+        --primary: #ff9f1c;
+        --dark: #283048;
+        --light: #f5f5f5;
+      }
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: var(--light);
+        color: var(--dark);
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background: white;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+      h1 {
+        margin: 0;
+        font-weight: 700;
+      }
+      .stats {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .stat-item {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+      }
+      main {
+        padding: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.5rem;
+      }
+      .game-card {
+        background: white;
+        padding: 1.2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        transition: transform 0.2s ease, box-shadow 0.2s;
+      }
+      .game-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      }
+      .game-title {
+        font-weight: 600;
+        margin: 0 0 0.5rem;
+      }
+      .game-desc {
+        color: #555;
+        font-size: 0.92rem;
+        line-height: 1.4;
+        margin: 0 0 1rem;
+      }
+      button.play-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      button.play-btn:hover {
+        background: #e68a00;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: #888;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ИСКРА ⚡️</h1>
+      <div class="stats">
+        <div class="stat-item">Сегодня игр: <span id="today-count">0</span></div>
+        <div class="stat-item">Лучший счёт: <span id="best-score">—</span></div>
+      </div>
+    </header>
+
+    <main>
+      <h2>Выбери испытание</h2>
+      <div class="games-grid">
+        <article class="game-card">
+          <h3 class="game-title">Фотопамять</h3>
+          <p class="game-desc">Запомни расположение предметов за 5 секунд и расставь их правильно.</p>
+          <button class="play-btn" onclick="startGame('photo-memory')">Играть</button>
+        </article>
+
+        <article class="game-card">
+          <h3 class="game-title">Лишний знак</h3>
+          <p class="game-desc">Найди отличающийся символ среди одинаковых за ограниченное время.</p>
+          <button class="play-btn" onclick="startGame('odd-symbol')">Играть</button>
+        </article>
+
+        <article class="game-card">
+          <h3 class="game-title">Повтори последовательность</h3>
+          <p class="game-desc">Запомни и повтори комбинацию цветов — сложность растёт с каждым раундом.</p>
+          <button class="play-btn" onclick="startGame('sequence')">Играть</button>
+        </article>
+
+        <article class="game-card">
+          <h3 class="game-title">Мозговой спринт</h3>
+          <p class="game-desc">Решай быстрые задачи на скорость — каждая секунда на счету.</p>
+          <button class="play-btn" onclick="startGame('sprint')">Играть</button>
+        </article>
+
+        <article class="game-card">
+          <h3 class="game-title">Два дела сразу</h3>
+          <p class="game-desc">Выполняй две задачи одновременно — тренируй многозадачность.</p>
+          <button class="play-btn" onclick="startGame('dual-task')">Играть</button>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      &copy; 2024 ИСКРА. Все права защищены.
+    </footer>
+
+    <script>
+      // Простой счётчик игр (сохраняется только в текущей сессии)
+      let count = 0;
+      const countEl = document.getElementById('today-count');
+      function startGame(gameId) {
+        count++;
+        countEl.textContent = count;
+        alert('Запуск игры: ' + gameId);
+        // Тут будет логика игры — можно подключить отдельный JS-файл или фреймворк
+      }
+
+      // Можно добавить лучший счёт позже, если захочешь
+    </script>
+  </body>
+</html>
